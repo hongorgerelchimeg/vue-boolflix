@@ -1,7 +1,7 @@
 <template>
   <div class="col">
    <div class="card p-3 h-100" :id="movieId">
-      <img class="img-fluid" :src="`https://image.tmdb.org/t/p/original/${moviePoster}`" :alt="movieTitle">
+      <img class="img-fluid" :src="`https://image.tmdb.org/t/p/w342/${moviePoster}`" :alt="movieTitle">
       <h3> {{movieTitle}} </h3>
       <h4> {{movieTitleOriginal}}</h4>
       <div class="language-holder">
@@ -15,7 +15,10 @@
           <p>language: {{movieLang}}</p>
         </div>
       </div>
-      <div class="voto">{{movieRating}}</div>
+      <div class="voto">
+       <font-awesome-icon v-for="(star, index) in movieRatingInStar(movieRating)" :key="index" icon="fa-solid fa-star fa-pulse" />
+       <font-awesome-icon v-for="(star, index) in movieRatingInStarEmpty(movieRating)" :key="`star-${index}`" icon="fa-regular fa-star" />
+      </div>
    </div>
  </div>
 </template>
@@ -43,7 +46,20 @@ export default {
     //Movie Language Check
     movieLanguageCheck(lang) {
       return this.langCheckArr.includes(lang)
-    }
+    },
+    // Rating Star Generator ////
+    movieRatingInStar (rating) {
+      let ratingStar = Math.floor(rating / 2);
+      if (ratingStar > 1) return ratingStar;
+      else return 1; 
+    },
+    movieRatingInStarEmpty (rating) {
+      let ratingStar = Math.floor(rating / 2);
+      if (ratingStar == 5 ) return 0;
+      else if (ratingStar == 0 ) return 4;
+      else return 5 - ratingStar; 
+    },
+    ///////////////////////////
   }
 }
 </script>
