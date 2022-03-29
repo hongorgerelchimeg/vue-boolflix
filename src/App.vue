@@ -26,14 +26,15 @@ export default {
     return {
       querySearch: '',
       movieApi: 'https://api.themoviedb.org/3/movie/now_playing?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-IT&page=1',
-      serieApi: 'https://api.themoviedb.org/3/movie/latest?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-IT&page=1',
+      serieApi: 'https://api.themoviedb.org/3/tv/on_the_air?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-ITA&page=1',
       responseDelay: 10,
       movieArr: [],
       serieArr: [],
     }
   },
-  created () {
-    
+  mounted () {
+    this.requestApiMovie ();
+    this.requestApiSerie ();
   },
   methods: {
     // Fa Requesta Api Per Movie

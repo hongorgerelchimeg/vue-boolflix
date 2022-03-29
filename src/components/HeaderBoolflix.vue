@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <h1>BoolFlix</h1>
       <div class="seaerch-bar">
-        <input v-model="querySearchString" type="text" id="search-bar" name="search-bar" placeholder="Type something">
+        <input v-model="querySearchString" type="text" id="search-bar" name="search-bar" placeholder="Titles, people, series">
         <button @click="$emit('search', querySearchString)" id="search-btn">Search</button>
       </div>
     </div>
