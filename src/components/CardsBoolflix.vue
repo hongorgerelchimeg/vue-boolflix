@@ -1,7 +1,7 @@
 <template>
   <div class="col">
    <div class="card p-3 h-100" :id="movieId">
-      <img class="img-fluid" :src="`https://image.tmdb.org/t/p/w342/${moviePoster}`" :alt="movieTitle">
+      <img class="img-fluid" :src="moviePosterCheck(moviePoster)" :alt="movieTitle">
       <h3> {{movieTitle}} </h3>
       <h4> {{movieTitleOriginal}}</h4>
       <div class="language-holder">
@@ -49,18 +49,23 @@ export default {
     },
     // Rating Star Generator ////
     movieRatingInStar (rating) {
-      let ratingStar = Math.floor(rating / 2);
+      let ratingStar = Math.floor(rating / 2) + 1;
       if (ratingStar > 1) return ratingStar;
+      else if  (rating == 0) return 0;
       else return 1; 
     },
     movieRatingInStarEmpty (rating) {
-      let ratingStar = Math.floor(rating / 2);
+      let ratingStar = Math.floor(rating / 2) + 1;
       if (ratingStar == 5 ) return 0;
-      else if (ratingStar == 0 ) return 4;
+      else if (rating == 0 ) return 5;
       else return 5 - ratingStar; 
     },
     ///////////////////////////
-  }
+    moviePosterCheck(poster) {
+      if (poster == null) return require('../../public/image_not_found.svg');
+      else return `https://image.tmdb.org/t/p/w342/${poster}`;
+    }
+  } 
 }
 </script>
 
