@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-   <header-boolflix 
-    @search="querySearchStringPass"
-   />
-   <main-boolflix 
-    :arr-movie-prop="movieArr"
-    :arr-serie-prop="serieArr"
-   />
+    <div class="container-fluid bg-black">
+      <header-boolflix 
+        @search="querySearchStringPass"
+      />
+      <main-boolflix 
+        :arr-movie-prop="movieArr"
+        :arr-serie-prop="serieArr"
+      />
+   </div>
     
   </div>
 </template>

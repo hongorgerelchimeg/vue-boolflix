@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="container">
+    <div class="movie-holder">
       <h2>Movie</h2>
-      <div class="row row-cols-3 g-4">
+      <div class="row row-cols-6 gx-3 gy-5">
         <cards-boolflix 
           v-for="movie in this.arrMovieProp"
           :key="movie.id"
@@ -16,9 +16,9 @@
 
       </div>
     </div>
-    <div class="container">
+    <div class="serie-holder">
       <h2>Serie TV</h2>
-      <div class="row row-cols-3 g-4">
+      <div class="row row-cols-6 gx-3 gy-5">
         <cards-boolflix 
           v-for="movie in this.arrSerieProp"
           :key="movie.id"
