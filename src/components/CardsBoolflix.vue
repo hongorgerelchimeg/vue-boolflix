@@ -1,12 +1,26 @@
 <template>
-  <div class="container">
-    cards
-  </div>
+  <div class="col">
+   <div class="card p-3 h-100" :id="movieId">
+      <img class="img-fluid" :src="`https://image.tmdb.org/t/p/original/${moviePoster}`" :alt="movieTitle">
+      <h3> {{movieTitle}} </h3>
+      <h4> {{movieTitleOriginal}}</h4>
+      <p>{{movieLang}}</p>
+      <div class="voto">{{movieRating}}</div>
+   </div>
+ </div>
 </template>
 
 <script>
 export default {
   name: 'CardsBoolflix',
+  props: {
+    moviePoster: String,
+    movieId: Number,
+    movieTitle: String,
+    movieTitleOriginal: String,
+    movieLang: String,
+    movieRating: String,
+  }
 }
 </script>
 
