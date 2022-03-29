@@ -4,7 +4,7 @@
       <img class="img-fluid" :src="`https://image.tmdb.org/t/p/original/${moviePoster}`" :alt="movieTitle">
       <h3> {{movieTitle}} </h3>
       <h4> {{movieTitleOriginal}}</h4>
-      <p>{{movieLang}}</p>
+      <lang-flag :iso="movieLang" squared="false"/>
       <div class="voto">{{movieRating}}</div>
    </div>
  </div>
