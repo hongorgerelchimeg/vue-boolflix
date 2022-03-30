@@ -11,7 +11,6 @@
             <lang-flag v-if="movieLanguageCheck(movieLang)" :iso="movieLang"/>
             <div v-else>
               <div class="d-flex align-items-center-2 card-poster-img">
-                <img class="me-1" height="20px" src="https://icons-for-free.com/iconfiles/png/512/globe+international+work+world+icon-1320086521784287131.png" alt="">
                 <span>language flag not detected </span>
               </div>
               
@@ -115,6 +114,7 @@ export default {
   }
   .description {
     padding: 2rem 1rem;
+    font-size: .7rem;
     background-color: rgb(25, 25, 25);
     color: white;
     width: 100%;
