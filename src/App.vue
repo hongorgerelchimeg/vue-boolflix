@@ -7,6 +7,8 @@
       <main-boolflix 
         :arr-movie-prop="movieArr"
         :arr-serie-prop="serieArr"
+        :page-loaded="pageLoaded"
+        :network-error="networkError"
       />
    </div>
     
@@ -29,9 +31,11 @@ export default {
       querySearch: '',
       movieApi: 'https://api.themoviedb.org/3/movie/now_playing?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-IT&page=1',
       serieApi: 'https://api.themoviedb.org/3/tv/on_the_air?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-ITA&page=1',
-      responseDelay: 10,
+      responseDelay: 2000,
       movieArr: [],
       serieArr: [],
+      pageLoaded: false,
+      networkError: false,
     }
   },
   mounted () {
@@ -41,6 +45,9 @@ export default {
   methods: {
     // Fa Requesta Api Per Movie
     requestApiMovie () {
+      if (this.querySearch == '') this.movieApi = 'https://api.themoviedb.org/3/movie/now_playing?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-IT&page=1'; 
+      this.pageLoaded = false;
+      this.networkError = false;
       this.movieArr = [],
       setTimeout (() => {
         axios.get(this.movieApi)
@@ -48,20 +55,39 @@ export default {
             responseMovie.data.results.forEach(movie => {
               this.movieArr.push(movie);
             });
+            this.pageLoaded = true;
           })
+          .catch(error => {
+                    // handle error
+                    console.log(error);
+                    this.pageLoaded = true;
+                    this.networkError = true;
+                });
       },this.responseDelay)
     },
     // Fa Requesta Api Per Serie
     requestApiSerie () {
-      this.serieArr = [],
-      setTimeout (() => {
-        axios.get(this.serieApi)
-          .then((responseMovie) => {
-            responseMovie.data.results.forEach(serie => {
-              this.serieArr.push(serie);
-            });
-          })
-      },this.responseDelay)
+      if (this.querySearch == '') {
+        this.serieApi = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&language=it-ITA&page=1'; 
+      } 
+        this.pageLoaded = false;
+        this.networkError = false;
+        this.serieArr = [],
+        setTimeout (() => {
+          axios.get(this.serieApi)
+            .then((responseMovie) => {
+              responseMovie.data.results.forEach(serie => {
+                this.serieArr.push(serie);
+              });
+              this.pageLoaded = true;
+            })
+            .catch(error => {
+                      // handle error
+                      console.log(error);
+                      this.pageLoaded = true;
+                      this.networkError = true;
+                  });
+        },this.responseDelay)
     },
     querySearchStringPass(querySearchString) {
       this.querySearch = querySearchString;

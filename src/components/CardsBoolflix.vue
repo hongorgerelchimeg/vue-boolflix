@@ -5,10 +5,10 @@
         <img class="img-fluid" :src="moviePosterCheck(moviePoster)" :alt="movieTitle">
 
         <div v-if="showDescrip" class="description">
-          <h3> {{movieTitle}} </h3>
-          <h4> {{movieTitleOriginal}}</h4>
+          <h3>Titolo: {{movieTitle}} </h3>
+          <h4>Titolo originale: {{movieTitleOriginal}}</h4>
           <div class="language-holder">
-            <lang-flag v-if="movieLanguageCheck(movieLang)" :iso="movieLang"/>
+            lingua originale: <lang-flag v-if="movieLanguageCheck(movieLang)" :iso="movieLang" :squared="false"/>
             <div v-else>
               <div class="d-flex align-items-center-2 card-poster-img">
                 <span>language flag not detected </span>
@@ -18,7 +18,8 @@
             </div>
           </div>
           <div class="voto">
-          <font-awesome-icon v-for="(star, index) in movieRatingInStar(movieRating)" :key="index" icon="fa-solid fa-star fa-pulse" />
+            Voto:
+          <font-awesome-icon class="star-icon" v-for="(star, index) in movieRatingInStar(movieRating)" :key="index" icon="fa-solid fa-star fa-pulse" />
           <font-awesome-icon v-for="(star, index) in movieRatingInStarEmpty(movieRating)" :key="`star-${index}`" icon="fa-regular fa-star" />
           </div>
       </div>
@@ -113,6 +114,8 @@ export default {
     transition: box-shadow 0.5s ease-in;
   }
   .description {
+    max-height: 180px;
+    overflow: auto;
     padding: 2rem 1rem;
     font-size: .7rem;
     background-color: rgb(25, 25, 25);
@@ -125,5 +128,8 @@ export default {
     h4 {
       font-size: 0.9rem;
     }
+  }
+  .star-icon {
+    color: gold;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid bg-black text-white">
     <div class="d-flex justify-content-between align-items-center header">
-      <img :src="require('../../public/logo.svg')" alt="" class="logo">
+      <img @click="refreshPage()" :src="require('../../public/logo.svg')" alt="" class="logo">
       <div class="d-flex align-items-center">
         <div class="search-bar">
           <div class="search-icon"><font-awesome-icon  icon="fa-solid fa-magnifying-glass" /></div>
@@ -26,8 +26,13 @@ export default {
   name: 'HeaderBoolflix',
   data () {
     return {
-      querySearchString: null,
+      querySearchString: '',
     }
+  },
+  methods: {
+    refreshPage () {
+      window.location.reload();
+    },
   },
 
 }
@@ -39,6 +44,7 @@ export default {
   }
   .logo {
     max-height: 25px;
+    cursor: pointer;
   }
   .search-bar {
     
