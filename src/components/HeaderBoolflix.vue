@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid bg-black text-white">
-    <div class="d-flex justify-content-between align-items-center header">
-      <img @click="refreshPage()" :src="require('../../public/logo.svg')" alt="" class="logo">
+  <div class="bg-black text-white">
+    <div class="d-flex justify-content-between flex-wrap align-items-center gy-4 header">
+      <img @click="refreshPage()" :src="require('../../public/logo.svg')" alt="" class="logo mb-2">
       <div class="d-flex align-items-center">
         <div class="search-bar">
           <div class="search-icon"><font-awesome-icon  icon="fa-solid fa-magnifying-glass" /></div>
@@ -59,6 +59,9 @@ export default {
       background-color: black;
       color: white;
       border: none;
+      &:focus-visible {
+        outline: none;
+      }
     }
     ::placeholder {
       color: rgba(255, 255, 255, 0.642);

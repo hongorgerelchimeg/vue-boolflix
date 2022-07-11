@@ -1,6 +1,6 @@
 <template>
-  <div class="col">
-   <div @mouseenter="showDescrip = true" @mouseleave="showDescrip = false" class="card" :id="movieId">
+  <div class="col ">
+   <div @mouseenter="showDescrip = true" @mouseleave="showDescrip = false" class="card bg-dark" :id="movieId">
       <div class="card-holder">
         <img class="img-fluid" :src="moviePosterCheck(moviePoster)" :alt="movieTitle">
 
@@ -77,15 +77,25 @@ export default {
 
 <style lang="scss" scoped>
   .col {
-    max-width: 342px;
+    max-width: 280px;
+    // border-radius: 5px;
+    
+  }
+
+  .card {
+    border: none;
+    border-radius: 5px;
+    
   }
   .card-holder {
-    height: 150px;
-    
+    max-height: 150px;
+    border-radius: 5px;
   }
   .card-holder img {
     width: 100%;
+    max-width: 280px;
     max-height: 150px;
+    border-radius: 5px;
     object-fit: cover;
   }
   .col:hover {

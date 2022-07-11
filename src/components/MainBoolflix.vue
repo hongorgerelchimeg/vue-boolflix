@@ -13,7 +13,7 @@
     <div v-else class="container-fluid text-white main">
       <div class="movie-holder">
         <h2>Movie</h2>
-        <div class="row row-cols-6 gx-3 gy-5 gallery js-flickity">
+        <div class="row row-cols-2 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 gx-3 gy-5">
           <cards-boolflix class="gallery-cell"
             v-for="movie in this.arrMovieProp"
             :key="movie.id"
@@ -28,7 +28,7 @@
       </div>
       <div class="serie-holder">
         <h2>Serie TV</h2>
-        <div class="row row-cols-6 gx-3 gy-5">
+        <div class="row row-cols-2 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 gx-3 gy-5">
           <cards-boolflix 
             v-for="movie in this.arrSerieProp"
             :key="movie.id"
